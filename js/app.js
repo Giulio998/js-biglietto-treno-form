@@ -1,10 +1,8 @@
-function myFunction() {
+function printTicket() {
     let km = document.getElementById('km').value;
     let discount = document.getElementById('discount').value;
     let name = document.getElementById('identity').value;
-
-   
-    
+  
     const basePrice = (km * 0.21);
     let finalPrice;
     const smallDiscount = 0.2;
@@ -13,9 +11,6 @@ function myFunction() {
     let seniorPrice = basePrice - (basePrice * bigDiscount);
     const minorDiscount = ((smallDiscount * 100) + '%');
     const seniorDiscount = ((bigDiscount * 100) + '%');
-    
-
-
 
 
     console.log("km ", km);
@@ -38,7 +33,7 @@ if (km > 0 && name != "" ) {
     } 
 
     let prezzoContainer = document.getElementById("prezzo");
-    prezzoContainer.innerHTML = finalPrice + " " + "€";
+    prezzoContainer.innerHTML = finalPrice + " "+ "€";
     
     let nameContainer = document.getElementById("nomePasseggero");
     nameContainer.innerHTML= name;
@@ -51,32 +46,33 @@ if (km > 0 && name != "" ) {
     
     let cpContainer = document.getElementById("cp");
     cpContainer.innerHTML = Math.floor(Math.random() * 100000) + 1;
-    
-
-
-
-
-
-
-
-
 
 } else {
-    alert("Inserisci i campi obbligatori")
-    
+    alert("Inserisci i campi obbligatori")   
 }
-
-
-
-
-
-    
 
 }
 
+function resetTicket() {
+    console.log("partito");
+    document.getElementById('km').value = 0;
+    document.getElementById('discount').value = "Nessuno"
+    document.getElementById('identity').value = "";
+
+
+    document.getElementById("prezzo").innerHTML = "";
+    document.getElementById("nomePasseggero").innerHTML= "";
+    document.getElementById("sconto").innerHTML = "";
+    document.getElementById("carrozza").innerHTML = "";
+    document.getElementById("cp").innerHTML = "";
+
+    
+}
+
     
 
 
-document.getElementById('submit').addEventListener("click", myFunction);
+document.getElementById('submit').addEventListener("click", printTicket);
 
     
+document.getElementById('reset').addEventListener("click", resetTicket);
